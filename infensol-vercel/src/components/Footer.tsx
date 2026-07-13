@@ -33,6 +33,9 @@ export function Footer() {
               <a href="tel:+919900716198" className="text-foreground/70 hover:text-champagne transition-colors">+91 99007 16198</a>
             </li>
             <li>
+              <a href="tel:+919606448804" className="text-foreground/70 hover:text-champagne transition-colors">+91 96064 48804</a>
+            </li>
+            <li>
               <a href="https://wa.me/919900716198" target="_blank" rel="noreferrer" className="text-foreground/70 hover:text-champagne transition-colors">WhatsApp</a>
             </li>
             <li>

@@ -5,6 +5,8 @@ import { trackEvent } from "@/lib/analytics";
 
 const PHONE = "+91 99007 16198";
 const PHONE_RAW = "+919900716198";
+const PHONE2 = "+91 96064 48804";
+const PHONE2_RAW = "+919606448804";
 const EMAIL = "santhosh@casameliainternational.com";
 
 export function Contact() {
@@ -109,6 +111,10 @@ export function Contact() {
             <div>
               <div className="text-[10px] tracking-luxury uppercase text-bronze mb-1">Direct</div>
               <a href={`tel:${PHONE_RAW}`} className="text-foreground/85 hover:text-champagne transition-colors">{PHONE}</a>
+            </div>
+            <div>
+              <div className="text-[10px] tracking-luxury uppercase text-bronze mb-1">Direct</div>
+              <a href={`tel:${PHONE2_RAW}`} className="text-foreground/85 hover:text-champagne transition-colors">{PHONE2}</a>
             </div>
             <div>
               <div className="text-[10px] tracking-luxury uppercase text-bronze mb-1">WhatsApp</div>
