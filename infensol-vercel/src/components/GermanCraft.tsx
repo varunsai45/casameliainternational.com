@@ -30,7 +30,7 @@ export function GermanCraft() {
         </Reveal>
 
         {/* Spec row */}
-        <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-px bg-border/40 border border-border/40">
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-px bg-border/40 border border-border/40">
           {[
             { v: "100%", l: "Manufactured in-house" },
             { v: "21 Days", l: "Average Delivery" },
@@ -42,6 +42,14 @@ export function GermanCraft() {
               <div className="text-[10px] tracking-luxury uppercase text-foreground/45 mt-3">{s.l}</div>
             </div>
           ))}
+
+          <div className="col-span-2 md:col-span-1 bg-background p-8 lg:p-10">
+            <div className="font-display text-4xl lg:text-5xl xl:text-[2.5rem] text-gradient-gold">Lifetime</div>
+            <div className="text-[10px] tracking-luxury uppercase text-foreground/45 mt-3">Warranty</div>
+            <div className="mt-4 text-sm text-foreground/55 font-light leading-relaxed">
+              Industry-leading craftsmanship backed by our Lifetime Warranty.
+            </div>
+          </div>
         </div>
       </div>
     </section>
