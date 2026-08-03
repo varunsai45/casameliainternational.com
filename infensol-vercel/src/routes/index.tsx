@@ -10,7 +10,6 @@ import { Process } from "@/components/Process";
 import { Testimonials } from "@/components/Testimonials";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
-import { FloatingCall } from "@/components/FloatingCall";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -30,7 +29,6 @@ function Index() {
       <Testimonials />
       <Contact />
       <Footer />
-      <FloatingCall />
     </main>
   );
 }

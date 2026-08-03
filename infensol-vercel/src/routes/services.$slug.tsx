@@ -2,7 +2,6 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { FloatingCall } from "@/components/FloatingCall";
 import { Reveal } from "@/components/Reveal";
 import { TiltCard } from "@/components/TiltCard";
 import { getService, services, type Service } from "@/lib/services-data";
@@ -214,7 +213,6 @@ function ServiceDetail() {
       </section>
 
       <Footer />
-      <FloatingCall />
     </main>
   );
 }

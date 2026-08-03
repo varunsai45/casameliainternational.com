@@ -1,7 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { FloatingCall } from "@/components/FloatingCall";
 import { Reveal } from "@/components/Reveal";
 import { blogPosts, getBlogPost, type BlogPost } from "@/lib/blog-data";
 
@@ -59,7 +58,7 @@ function BlogArticle() {
       </article>
       <section className="py-20 lg:py-28 bg-onyx bg-grain px-6 lg:px-16 text-center"><Reveal><div className="text-[10px] tracking-wider-luxury text-bronze uppercase mb-6">A Space Made Personal</div><h2 className="font-display text-4xl lg:text-6xl">Turn inspiration into <span className="italic">reality.</span></h2><Link to="/" hash="contact" className="mt-10 inline-flex bg-gradient-gold text-primary-foreground px-9 py-4 text-[11px] tracking-luxury uppercase shadow-glow hover:shadow-luxe transition-all duration-500">Book Consultation →</Link></Reveal></section>
       <section className="py-20 lg:py-28 px-6 lg:px-16"><div className="max-w-[1400px] mx-auto"><Reveal><h2 className="font-display text-4xl lg:text-6xl mb-12">Continue reading.</h2></Reveal><div className="grid md:grid-cols-3 gap-7">{related.map((item) => <Link key={item.slug} to="/blogs/$slug" params={{ slug: item.slug }} className="group"><div className="aspect-[4/3] overflow-hidden"><img src={item.image} alt={item.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" /></div><div className="text-[9px] tracking-luxury uppercase text-bronze mt-6">{item.category}</div><h3 className="font-display text-2xl lg:text-3xl mt-3 group-hover:text-champagne transition-colors">{item.title}</h3></Link>)}</div></div></section>
-      <Footer /><FloatingCall />
+      <Footer />
     </main>
   );
 }

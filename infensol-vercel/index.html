@@ -29,33 +29,5 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-
-    <!-- Casamelia AI Chat Widget -->
-    <script>
-      (function() {
-        var widgetUrl = 'https://casamelia-lead-platform.vercel.app/api/widget';
-        var iframe = document.createElement('iframe');
-        iframe.src = widgetUrl;
-        iframe.style.cssText = 'position:fixed;bottom:20px;right:20px;width:380px;height:600px;border:none;z-index:9999;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.15);display:none';
-        iframe.id = 'casamelia-chat-widget';
-        document.body.appendChild(iframe);
-
-        var btn = document.createElement('div');
-        btn.id = 'casamelia-chat-btn';
-        btn.innerHTML = '<span style="font-size:24px">💬</span>';
-        btn.style.cssText = 'position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#d4af37;border:none;border-radius:50%;cursor:pointer;z-index:9998;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.2);transition:transform 0.2s';
-        btn.onmouseover = function() { btn.style.transform = 'scale(1.1)'; };
-        btn.onmouseout = function() { btn.style.transform = 'scale(1)'; };
-        document.body.appendChild(btn);
-
-        var isOpen = false;
-        btn.onclick = function() {
-          isOpen = !isOpen;
-          iframe.style.display = isOpen ? 'block' : 'none';
-          btn.innerHTML = isOpen ? '<span style="font-size:20px">✕</span>' : '<span style="font-size:24px">💬</span>';
-          btn.style.background = isOpen ? '#0d1b2a' : '#d4af37';
-        };
-      })();
-    </script>
   </body>
 </html>

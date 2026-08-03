@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { FloatingCall } from "@/components/FloatingCall";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
@@ -63,7 +62,6 @@ function PrivacyPage() {
         </Section>
       </article>
       <Footer />
-      <FloatingCall />
     </main>
   );
 }

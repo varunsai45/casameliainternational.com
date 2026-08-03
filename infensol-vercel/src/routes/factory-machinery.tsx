@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { FloatingCall } from "@/components/FloatingCall";
 import { Reveal } from "@/components/Reveal";
 import factoryHero from "@/assets/german-factory.jpg";
 import hotPress from "@/assets/machine-hot-press.jpg";
@@ -86,7 +85,7 @@ function FactoryMachineryPage() {
         </div>
       </section>
       <section className="py-20 lg:py-28 px-6 text-center"><Reveal><div className="text-[10px] tracking-wider-luxury text-bronze uppercase mb-6">See Precision First-Hand</div><h2 className="font-display text-4xl lg:text-6xl">Arrange a private <span className="italic">factory visit.</span></h2><Link to="/" hash="contact" className="mt-10 inline-flex bg-gradient-gold text-primary-foreground px-9 py-4 text-[11px] tracking-luxury uppercase shadow-glow hover:shadow-luxe transition-all duration-500">Book Consultation →</Link></Reveal></section>
-      <Footer /><FloatingCall />
+      <Footer />
     </main>
   );
 }

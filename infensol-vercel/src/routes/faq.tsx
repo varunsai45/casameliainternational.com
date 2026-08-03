@@ -3,7 +3,6 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { FloatingCall } from "@/components/FloatingCall";
 import { Reveal } from "@/components/Reveal";
 
 const faqs = [
@@ -86,7 +85,7 @@ function FaqPage() {
           <Link to="/" hash="contact" className="mt-10 inline-flex bg-gradient-gold text-primary-foreground px-9 py-4 text-[11px] tracking-luxury uppercase shadow-glow hover:shadow-luxe transition-all duration-500">Book Consultation →</Link>
         </Reveal>
       </section>
-      <Footer /><FloatingCall />
+      <Footer />
     </main>
   );
 }

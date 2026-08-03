@@ -7,6 +7,7 @@ import {
 } from "@tanstack/react-router";
 
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { ContactWidget } from "@/components/ContactWidget";
 
 function NotFoundComponent() {
   return (
@@ -78,6 +79,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <GoogleAnalytics />
       <Outlet />
+      <ContactWidget />
     </QueryClientProvider>
   );
 }
