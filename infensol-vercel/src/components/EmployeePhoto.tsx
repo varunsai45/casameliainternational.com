@@ -20,23 +20,28 @@ export function EmployeePhoto({
   const src = candidate < candidates.length ? candidates[candidate] : null;
 
   return (
-    <div className={cn("relative h-full w-full overflow-hidden", className)}>
-      <div className="absolute inset-0 grid place-items-center bg-background">
+    <div className={cn("relative h-full w-full overflow-hidden bg-card", className)}>
+      {/* Premium silhouette fallback — shown only when no local photo exists */}
+      <div className="absolute inset-0 grid place-items-center bg-gradient-to-b from-card to-onyx">
         <div className="text-center">
-          <UserRound size={56} strokeWidth={1} className="mx-auto text-foreground/15" />
-          <span className="mt-3 block text-[9px] tracking-luxury uppercase text-foreground/30">
+          <div className="mx-auto grid h-20 w-20 place-items-center rounded-full border border-champagne/20 bg-champagne/5">
+            <UserRound size={40} strokeWidth={1} className="text-champagne/30" />
+          </div>
+          <span className="mt-4 block text-[9px] tracking-luxury uppercase text-foreground/30">
             Photo Coming Soon
           </span>
         </div>
       </div>
+
       {src && (
         <img
           src={src}
           alt={alt}
           loading="lazy"
           decoding="async"
+          sizes="(min-width: 1280px) 320px, (min-width: 1024px) 300px, (min-width: 768px) 350px, 100vw"
           onError={() => setCandidate((c) => c + 1)}
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+          className="relative h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
         />
       )}
     </div>
