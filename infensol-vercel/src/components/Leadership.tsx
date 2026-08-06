@@ -28,15 +28,6 @@ const members = [
     description:
       "Driving seamless sales operations, customer experience, and project execution across every luxury interior project.",
   },
-  {
-    name: "Mamata Rathod",
-    role: ["Design Manager"],
-    img: "/images/team/mamata-rathod.png",
-    alt: "Mamata Rathod — Design Manager, Casamelia International",
-    linkedin: "https://www.linkedin.com/in/mamatarathod",
-    description:
-      "Leading creative design with a focus on elegant, functional, and luxury living spaces tailored to every client.",
-  },
 ];
 
 export function Leadership() {

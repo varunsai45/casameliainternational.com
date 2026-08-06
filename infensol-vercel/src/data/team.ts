@@ -11,6 +11,7 @@ export function normalizeName(name: string): string {
 
 const linkedinProfiles: Record<string, string> = {
   "mohammed saif": "https://www.linkedin.com/in/mohammed-saif-b7bb80209",
+  "mamata rathod": "https://www.linkedin.com/in/mamatarathod",
   "vidya r": "https://www.linkedin.com/in/vid-44-vid",
   "pallavi kumar sadalagi": "https://www.linkedin.com/in/pallavi-sadalage-219187382",
   "mahmed jakeer": "https://www.linkedin.com/in/mahmedjakeer",
@@ -26,6 +27,12 @@ const employees: Omit<Employee, "linkedin">[] = [
     designation: "Sales Manager",
     intro:
       "Leads the sales team with a customer-first approach, building lasting client relationships and delivering exceptional luxury interior experiences from consultation to project completion.",
+  },
+  {
+    name: "Mamata Rathod",
+    designation: "Design Manager",
+    intro:
+      "Leads creative design with a focus on elegant, functional, and luxury living spaces, guiding every project from concept to a refined, client-tailored finish.",
   },
   {
     name: "Vidya R",
@@ -101,7 +108,32 @@ const employees: Omit<Employee, "linkedin">[] = [
   },
 ];
 
-export const teamMembers: Employee[] = employees.map((employee) => ({
-  ...employee,
-  linkedin: linkedinProfiles[normalizeName(employee.name)],
-}));
+const employeeByName = new Map(
+  employees.map((employee) => [normalizeName(employee.name), employee]),
+);
+
+export const featuredTeam = ["Mohammed Saif", "Mamata Rathod", "Karthik S"];
+
+export const remainingTeam = [
+  "Vidya R",
+  "Pallavi Kumar Sadalagi",
+  "Chethana R",
+  "Oswald Jonathan For",
+  "Mahmed Jakeer",
+  "Mahanthesh Naik H",
+  "Manoj S. Jogi",
+  "Shuyalb Ahmed",
+  "Mahendra B G",
+  "Shilpa Patil",
+  "Varun Sai M",
+];
+
+const resolveEmployee = (name: string): Employee => {
+  const employee = employeeByName.get(normalizeName(name));
+  if (!employee) throw new Error(`Team member not found: ${name}`);
+  return { ...employee, linkedin: linkedinProfiles[normalizeName(name)] };
+};
+
+export const teamMembers: Employee[] = [...featuredTeam, ...remainingTeam].map(
+  resolveEmployee,
+);
