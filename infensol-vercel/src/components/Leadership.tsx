@@ -33,7 +33,7 @@ const members = [
     role: ["Design Manager"],
     img: "/images/team/mamata-rathod.png",
     alt: "Mamata Rathod — Design Manager, Casamelia International",
-    linkedin: "https://www.linkedin.com/",
+    linkedin: "https://www.linkedin.com/in/mamatarathod",
     description:
       "Leading creative design with a focus on elegant, functional, and luxury living spaces tailored to every client.",
   },
