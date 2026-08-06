@@ -1,49 +1,66 @@
+import { useCallback, useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
+import { Linkedin, ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal } from "./Reveal";
-import { Linkedin } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 
-const profiles = [
+const members = [
   {
     name: "Santhosh M S",
-    eyebrow: "Founder · Managing Director",
-    designation: ["Managing Director", "Casamelia International LLC"],
-    img: "/images/team/santhosh-ms.jpg",
-    alt: "Santhosh M S — Managing Director, Casamelia International",
+    role: ["CEO · Managing Director"],
+    img: "/images/team/santhosh-ms.png",
+    alt: "Santhosh M S — CEO and Managing Director, Casamelia International",
     linkedin: "https://www.linkedin.com/in/santhosh-m-s-a4880637",
-    chips: [
-      "International Business",
-      "Luxury Interiors",
-      "German Manufacturing",
-      "Product Design",
-      "Business Strategy",
-    ],
-    bio: [
-      "Experienced Business Head with a demonstrated history of working in the construction industry across multiple verticals including German window manufacturing, architectural acoustics, and luxury interior design. He has collaborated with leading partners from Germany, Denmark, Spain, and Italy, delivering world-class craftsmanship and innovative interior solutions.",
-      "With expertise in ANSYS, Simulink, Computer-Aided Engineering (CAE), Automotive Engineering, and Product Management, he combines technical excellence with strategic business leadership.",
-      "He holds a Master of Technology (M.Tech.) in Product Design and Manufacturing from The National Institute of Engineering, Mysore, Karnataka.",
-    ],
+    description:
+      "Leading Casamelia International with a vision for world-class luxury interiors, innovation, and premium craftsmanship.",
   },
   {
     name: "Nitu Maheshwari",
-    eyebrow: "Executive Leadership",
-    designation: ["General Manager", "Sales & Operations"],
-    img: "/images/team/nitu-maheshwari.jpg",
-    alt: "Nitu Maheshwari — General Manager, Sales & Operations, Casamelia International",
+    role: ["General Manager", "Sales & Operations"],
+    img: "/images/team/nitu-maheshwari.png",
+    alt: "Nitu Maheshwari — General Manager, Sales and Operations, Casamelia International",
     linkedin: "https://www.linkedin.com/in/nitu-maheshwari-b47098188",
-    chips: [
-      "Sales Leadership",
-      "Operations Management",
-      "Client Relations",
-      "Project Coordination",
-      "Luxury Interior Projects",
-    ],
-    bio: [
-      "Leads Sales and Operations at Casamelia International, ensuring seamless coordination between clients, designers, manufacturing, and project execution. She focuses on delivering exceptional customer experiences while maintaining operational excellence and timely project delivery.",
-      "Her expertise spans sales strategy, client relationship management, and operations management, with a proven record of steering luxury interior projects from first conversation to flawless completion.",
-    ],
+    description:
+      "Driving seamless sales operations, customer experience, and project execution across every luxury interior project.",
+  },
+  {
+    name: "Mamata Rathod",
+    role: ["Design Manager"],
+    img: "/images/team/mamata-rathod.png",
+    alt: "Mamata Rathod — Design Manager, Casamelia International",
+    linkedin: "https://www.linkedin.com/",
+    description:
+      "Leading creative design with a focus on elegant, functional, and luxury living spaces tailored to every client.",
   },
 ];
 
 export function Leadership() {
+  const [api, setApi] = useState<CarouselApi>();
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(false);
+
+  const onSelect = useCallback((a: CarouselApi) => {
+    if (!a) return;
+    setCanPrev(a.canScrollPrev());
+    setCanNext(a.canScrollNext());
+  }, []);
+
+  useEffect(() => {
+    if (!api) return;
+    onSelect(api);
+    api.on("reInit", onSelect);
+    api.on("select", onSelect);
+    return () => {
+      api.off("reInit", onSelect);
+      api.off("select", onSelect);
+    };
+  }, [api, onSelect]);
+
   return (
     <section id="leadership" className="relative py-24 lg:py-36 overflow-hidden bg-onyx bg-grain">
       <div
@@ -57,7 +74,7 @@ export function Leadership() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-16">
         {/* Section header */}
         <Reveal>
-          <div className="text-center max-w-3xl mx-auto mb-20 lg:mb-28">
+          <div className="text-center max-w-3xl mx-auto mb-14 lg:mb-20">
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="h-px w-12 bg-bronze" />
               <span className="text-[10px] tracking-wider-luxury text-bronze uppercase">
@@ -66,100 +83,115 @@ export function Leadership() {
               <span className="h-px w-12 bg-bronze" />
             </div>
             <h2 className="font-display text-4xl lg:text-5xl xl:text-6xl leading-[1.08]">
-              Meet the <span className="italic">Visionaries</span> Behind{" "}
-              <span className="text-gradient-gold">Casamelia International</span>
+              Meet the <span className="italic">Leadership</span> Behind{" "}
+              <span className="text-gradient-gold">Casamelia</span>
             </h2>
             <p className="mt-8 text-foreground/60 font-light text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
-              The leadership team shaping exceptional luxury interiors through
-              innovation, craftsmanship, and customer excellence.
+              The experienced professionals driving innovation, craftsmanship, and customer
+              excellence across every Casamelia project.
             </p>
           </div>
         </Reveal>
 
-        {/* Profiles */}
-        <div className="space-y-24 lg:space-y-36">
-          {profiles.map((p, i) => {
-            const flip = i % 2 === 1;
-            return (
-              <Reveal key={p.name} delay={i * 80}>
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        {/* Carousel */}
+        <Carousel
+          setApi={setApi}
+          opts={{ align: "start", slidesToScroll: 1, containScroll: "trimSnaps" }}
+        >
+          <CarouselContent className="-ml-6">
+            {members.map((m) => (
+              <CarouselItem key={m.name} className="basis-full md:basis-1/2 lg:basis-1/3 pl-6">
+                <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-champagne/20 bg-onyx shadow-luxe transition-all duration-500 hover:border-champagne/50 hover:shadow-glow">
                   {/* Portrait */}
-                  <div className={`relative lg:col-span-5 ${flip ? "lg:order-2" : ""}`}>
+                  <div className="relative overflow-hidden">
+                    <div className="aspect-[3/4]">
+                      <img
+                        src={m.img}
+                        alt={m.alt}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-[2200ms] ease-out group-hover:scale-[1.06]"
+                      />
+                    </div>
                     <div
-                      className={`absolute -top-4 w-full h-full border border-champagne/15 hidden lg:block ${
-                        flip ? "-right-4" : "-left-4"
-                      }`}
+                      className="absolute inset-0 bg-gradient-to-t from-onyx via-onyx/25 to-transparent"
                       aria-hidden
                     />
-                    <figure className="group relative aspect-[4/5] overflow-hidden border-gradient shadow-luxe">
-                      <img
-                        src={p.img}
-                        alt={p.alt}
-                        loading="lazy"
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2200ms] ease-out group-hover:scale-[1.06]"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-onyx/60 via-transparent to-onyx/20 transition-opacity duration-700" />
-                      <div
-                        className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                        style={{
-                          background:
-                            "linear-gradient(120deg, transparent 30%, oklch(0.82 0.07 80 / 0.12) 50%, transparent 70%)",
-                        }}
-                      />
-                      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-champagne/50 to-transparent" />
-                    </figure>
+
+                    {/* Frosted info panel */}
+                    <div className="absolute inset-x-0 bottom-0 border-t border-champagne/15 bg-onyx/55 px-6 py-5 backdrop-blur-md">
+                      <div className="flex items-center justify-between gap-4">
+                        <div>
+                          <h3 className="font-display text-2xl text-white leading-tight">
+                            {m.name}
+                          </h3>
+                          <div className="mt-1.5 text-[10px] tracking-luxury uppercase text-champagne leading-relaxed">
+                            {m.role.map((line) => (
+                              <span key={line} className="block">
+                                {line}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                        <a
+                          href={m.linkedin}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`${m.name} on LinkedIn`}
+                          className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-champagne/40 text-champagne transition-all duration-300 hover:bg-champagne hover:text-primary-foreground"
+                        >
+                          <Linkedin size={15} strokeWidth={1.5} />
+                        </a>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Copy */}
-                  <div className={`lg:col-span-7 group ${flip ? "lg:order-1" : ""}`}>
-                    <div className="flex items-center gap-3 mb-5">
-                      <span className="h-px w-10 bg-bronze" />
-                      <span className="text-[10px] tracking-wider-luxury text-bronze uppercase">
-                        {p.eyebrow}
-                      </span>
-                    </div>
-                    <h3 className="font-display text-4xl lg:text-5xl xl:text-6xl leading-[1.05]">
-                      {p.name}
-                    </h3>
-                    <div className="mt-4 text-[11px] tracking-luxury uppercase text-champagne leading-loose">
-                      {p.designation.map((line) => (
-                        <span key={line} className="block">
-                          {line}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="mt-6 h-px w-14 bg-gradient-to-r from-champagne to-transparent transition-all duration-700 group-hover:w-24" />
-                    <div className="mt-8 space-y-4 text-foreground/60 font-light leading-relaxed">
-                      {p.bio.map((para) => (
-                        <p key={para.slice(0, 24)}>{para}</p>
-                      ))}
-                    </div>
-                    <div className="mt-8 flex flex-wrap gap-3">
-                      {p.chips.map((c) => (
-                        <span
-                          key={c}
-                          className="inline-flex items-center border border-champagne/25 bg-onyx/60 px-5 py-2 text-[10px] tracking-luxury uppercase text-champagne/85 transition-colors duration-300 hover:border-champagne hover:text-champagne"
-                        >
-                          {c}
-                        </span>
-                      ))}
-                    </div>
-                    <a
-                      href={p.linkedin}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`${p.name} on LinkedIn`}
-                      className="mt-9 inline-flex items-center gap-3 border border-champagne/40 text-champagne px-6 py-3 text-[10px] tracking-luxury uppercase hover:bg-champagne hover:text-primary-foreground hover:shadow-glow hover:-translate-y-0.5 transition-all duration-300"
-                    >
-                      <Linkedin size={16} strokeWidth={1.5} />
-                      LinkedIn
-                    </a>
+                  {/* Description */}
+                  <div className="flex flex-1 flex-col p-6 lg:p-7">
+                    <div className="h-px w-14 bg-gradient-to-r from-champagne to-transparent" />
+                    <p className="mt-4 flex-1 text-sm lg:text-[15px] leading-relaxed text-foreground/65 font-light">
+                      {m.description}
+                    </p>
                   </div>
-                </div>
-              </Reveal>
-            );
-          })}
+                </article>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+
+        {/* Navigation */}
+        <div className="mt-10 flex items-center justify-center gap-4">
+          <button
+            type="button"
+            onClick={() => api?.scrollPrev()}
+            disabled={!canPrev}
+            aria-label="Previous leaders"
+            className="grid h-11 w-11 place-items-center rounded-full border border-champagne/40 text-champagne transition-all duration-300 hover:bg-champagne hover:text-primary-foreground hover:shadow-glow disabled:pointer-events-none disabled:opacity-30"
+          >
+            <ChevronLeft size={18} strokeWidth={1.5} />
+          </button>
+          <button
+            type="button"
+            onClick={() => api?.scrollNext()}
+            disabled={!canNext}
+            aria-label="Next leaders"
+            className="grid h-11 w-11 place-items-center rounded-full border border-champagne/40 text-champagne transition-all duration-300 hover:bg-champagne hover:text-primary-foreground hover:shadow-glow disabled:pointer-events-none disabled:opacity-30"
+          >
+            <ChevronRight size={18} strokeWidth={1.5} />
+          </button>
         </div>
+
+        {/* View more */}
+        <Reveal>
+          <div className="mt-12 text-center">
+            <Link
+              to="/team"
+              className="group inline-flex items-center gap-3 border-2 border-champagne text-champagne px-9 py-4 text-[11px] tracking-luxury uppercase hover:bg-champagne hover:text-primary-foreground hover:shadow-glow hover:-translate-y-0.5 transition-all duration-500"
+            >
+              View More
+              <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
+            </Link>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -9,33 +9,19 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TermsRouteImport } from './routes/terms'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as FaqRouteImport } from './routes/faq'
-import { Route as FactoryMachineryRouteImport } from './routes/factory-machinery'
-import { Route as BlogsRouteImport } from './routes/blogs'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
+import { Route as BlogsRouteImport } from './routes/blogs'
+import { Route as FactoryMachineryRouteImport } from './routes/factory-machinery'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as TeamRouteImport } from './routes/team'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as BlogsSlugRouteImport } from './routes/blogs.$slug'
+import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FaqRoute = FaqRouteImport.update({
-  id: '/faq',
-  path: '/faq',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FactoryMachineryRoute = FactoryMachineryRouteImport.update({
-  id: '/factory-machinery',
-  path: '/factory-machinery',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogsRoute = BlogsRouteImport.update({
@@ -43,20 +29,40 @@ const BlogsRoute = BlogsRouteImport.update({
   path: '/blogs',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const FactoryMachineryRoute = FactoryMachineryRouteImport.update({
+  id: '/factory-machinery',
+  path: '/factory-machinery',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesSlugRoute = ServicesSlugRouteImport.update({
-  id: '/services/$slug',
-  path: '/services/$slug',
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamRoute = TeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogsSlugRoute = BlogsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => BlogsRoute,
+} as any)
+const ServicesSlugRoute = ServicesSlugRouteImport.update({
+  id: '/services/$slug',
+  path: '/services/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/factory-machinery': typeof FactoryMachineryRoute
   '/faq': typeof FaqRoute
   '/privacy': typeof PrivacyRoute
+  '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
   '/blogs/$slug': typeof BlogsSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/factory-machinery': typeof FactoryMachineryRoute
   '/faq': typeof FaqRoute
   '/privacy': typeof PrivacyRoute
+  '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
   '/blogs/$slug': typeof BlogsSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/factory-machinery': typeof FactoryMachineryRoute
   '/faq': typeof FaqRoute
   '/privacy': typeof PrivacyRoute
+  '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
   '/blogs/$slug': typeof BlogsSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/factory-machinery'
     | '/faq'
     | '/privacy'
+    | '/team'
     | '/terms'
     | '/blogs/$slug'
     | '/services/$slug'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/factory-machinery'
     | '/faq'
     | '/privacy'
+    | '/team'
     | '/terms'
     | '/blogs/$slug'
     | '/services/$slug'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/factory-machinery'
     | '/faq'
     | '/privacy'
+    | '/team'
     | '/terms'
     | '/blogs/$slug'
     | '/services/$slug'
@@ -129,38 +141,18 @@ export interface RootRouteChildren {
   FactoryMachineryRoute: typeof FactoryMachineryRoute
   FaqRoute: typeof FaqRoute
   PrivacyRoute: typeof PrivacyRoute
+  TeamRoute: typeof TeamRoute
   TermsRoute: typeof TermsRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/faq': {
-      id: '/faq'
-      path: '/faq'
-      fullPath: '/faq'
-      preLoaderRoute: typeof FaqRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/factory-machinery': {
-      id: '/factory-machinery'
-      path: '/factory-machinery'
-      fullPath: '/factory-machinery'
-      preLoaderRoute: typeof FactoryMachineryRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blogs': {
@@ -170,18 +162,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/factory-machinery': {
+      id: '/factory-machinery'
+      path: '/factory-machinery'
+      fullPath: '/factory-machinery'
+      preLoaderRoute: typeof FactoryMachineryRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/$slug': {
-      id: '/services/$slug'
-      path: '/services/$slug'
-      fullPath: '/services/$slug'
-      preLoaderRoute: typeof ServicesSlugRouteImport
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team': {
+      id: '/team'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof TeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blogs/$slug': {
@@ -190,6 +203,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/blogs/$slug'
       preLoaderRoute: typeof BlogsSlugRouteImport
       parentRoute: typeof BlogsRoute
+    }
+    '/services/$slug': {
+      id: '/services/$slug'
+      path: '/services/$slug'
+      fullPath: '/services/$slug'
+      preLoaderRoute: typeof ServicesSlugRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -210,6 +230,7 @@ const rootRouteChildren: RootRouteChildren = {
   FactoryMachineryRoute: FactoryMachineryRoute,
   FaqRoute: FaqRoute,
   PrivacyRoute: PrivacyRoute,
+  TeamRoute: TeamRoute,
   TermsRoute: TermsRoute,
   ServicesSlugRoute: ServicesSlugRoute,
 }
