@@ -3,7 +3,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
 import { TeamMemberCard } from "@/components/TeamMemberCard";
-import { teamMembers } from "@/data/team";
+import { featuredMembers, remainingMembers } from "@/data/team";
 
 export const Route = createFileRoute("/team")({
   head: () => ({
@@ -55,11 +55,35 @@ function TeamPage() {
         </div>
       </section>
 
-      {/* Team grid */}
+      {/* Featured Team */}
+      <section className="px-6 pt-20 lg:px-16 lg:pt-28">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+            {featuredMembers.map((member, index) => (
+              <TeamMemberCard key={member.name} member={member} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Team divider */}
+      <Reveal>
+        <div className="px-6 pt-20 lg:px-16 lg:pt-24">
+          <div className="mx-auto flex max-w-[1400px] items-center gap-3">
+            <span className="h-px flex-1 bg-gradient-to-r from-transparent to-champagne/40" />
+            <span className="text-[10px] tracking-wider-luxury uppercase text-bronze">
+              Our Team
+            </span>
+            <span className="h-px flex-1 bg-gradient-to-l from-transparent to-champagne/40" />
+          </div>
+        </div>
+      </Reveal>
+
+      {/* Remaining Team */}
       <section className="px-6 py-20 lg:px-16 lg:py-28">
         <div className="mx-auto max-w-[1400px]">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4">
-            {teamMembers.map((member, index) => (
+            {remainingMembers.map((member, index) => (
               <TeamMemberCard key={member.name} member={member} index={index} />
             ))}
           </div>

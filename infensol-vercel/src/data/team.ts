@@ -134,6 +134,6 @@ const resolveEmployee = (name: string): Employee => {
   return { ...employee, linkedin: linkedinProfiles[normalizeName(name)] };
 };
 
-export const teamMembers: Employee[] = [...featuredTeam, ...remainingTeam].map(
-  resolveEmployee,
-);
+export const featuredMembers: Employee[] = featuredTeam.map(resolveEmployee);
+
+export const remainingMembers: Employee[] = remainingTeam.map(resolveEmployee);
