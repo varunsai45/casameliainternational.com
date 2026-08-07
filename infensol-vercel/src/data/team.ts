@@ -53,7 +53,7 @@ const employees: Omit<Employee, "linkedin">[] = [
       "Creates elegant and functional interior concepts that balance aesthetics, innovation, and practical living solutions tailored to each client's vision.",
   },
   {
-    name: "Oswald Jonathan For",
+    name: "Oswald Jonathan",
     designation: "Business Development Executive",
     intro:
       "Identifies new business opportunities, develops strategic partnerships, and builds lasting client relationships that contribute to the company's continued growth.",
@@ -83,7 +83,7 @@ const employees: Omit<Employee, "linkedin">[] = [
       "Works closely with prospective clients to understand project requirements, provide tailored solutions, and build strong long-term business relationships.",
   },
   {
-    name: "Shuyalb Ahmed",
+    name: "Shuaib Ahmed",
     designation: "Assistant Sales Manager",
     intro:
       "Supports the sales team by assisting clients, coordinating project requirements, and delivering a smooth and professional customer journey.",
@@ -118,11 +118,11 @@ export const remainingTeam = [
   "Vidya R",
   "Pallavi Kumar Sadalagi",
   "Chethana R",
-  "Oswald Jonathan For",
+  "Oswald Jonathan",
   "Mahmed Jakeer",
   "Mahanthesh Naik H",
   "Manoj S. Jogi",
-  "Shuyalb Ahmed",
+  "Shuaib Ahmed",
   "Mahendra B G",
   "Shilpa Patil",
   "Varun Sai M",
