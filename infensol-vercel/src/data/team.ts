@@ -53,12 +53,6 @@ const employees: Omit<Employee, "linkedin">[] = [
       "Creates elegant and functional interior concepts that balance aesthetics, innovation, and practical living solutions tailored to each client's vision.",
   },
   {
-    name: "Oswald Jonathan",
-    designation: "Business Development Executive",
-    intro:
-      "Identifies new business opportunities, develops strategic partnerships, and builds lasting client relationships that contribute to the company's continued growth.",
-  },
-  {
     name: "Mahmed Jakeer",
     designation: "Design Engineer",
     intro:
@@ -114,18 +108,23 @@ const employeeByName = new Map(
 
 export const featuredTeam = ["Mohammed Saif", "Mamata Rathod", "Karthik S"];
 
-export const remainingTeam = [
-  "Vidya R",
-  "Pallavi Kumar Sadalagi",
-  "Chethana R",
-  "Oswald Jonathan",
-  "Mahmed Jakeer",
-  "Mahanthesh Naik H",
-  "Manoj S. Jogi",
-  "Shuaib Ahmed",
-  "Mahendra B G",
-  "Shilpa Patil",
-  "Varun Sai M",
+const departmentSections: { name: string; members: string[] }[] = [
+  {
+    name: "Design",
+    members: ["Pallavi Kumar Sadalagi", "Chethana R", "Mahmed Jakeer", "Mahendra B G"],
+  },
+  {
+    name: "Sales & Business Development",
+    members: ["Vidya R", "Manoj S. Jogi", "Shuaib Ahmed"],
+  },
+  {
+    name: "Operations",
+    members: ["Shilpa Patil", "Mahanthesh Naik H"],
+  },
+  {
+    name: "Digital & Marketing",
+    members: ["Varun Sai M"],
+  },
 ];
 
 const resolveEmployee = (name: string): Employee => {
@@ -136,4 +135,9 @@ const resolveEmployee = (name: string): Employee => {
 
 export const featuredMembers: Employee[] = featuredTeam.map(resolveEmployee);
 
-export const remainingMembers: Employee[] = remainingTeam.map(resolveEmployee);
+export const departments: { name: string; members: Employee[] }[] = departmentSections.map(
+  (department) => ({
+    name: department.name,
+    members: department.members.map(resolveEmployee),
+  }),
+);

@@ -3,7 +3,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
 import { TeamMemberCard } from "@/components/TeamMemberCard";
-import { featuredMembers, remainingMembers } from "@/data/team";
+import { featuredMembers, departments } from "@/data/team";
 
 export const Route = createFileRoute("/team")({
   head: () => ({
@@ -66,29 +66,36 @@ function TeamPage() {
         </div>
       </section>
 
-      {/* Our Team divider */}
-      <Reveal>
-        <div className="px-6 pt-20 lg:px-16 lg:pt-24">
-          <div className="mx-auto flex max-w-[1400px] items-center gap-3">
-            <span className="h-px flex-1 bg-gradient-to-r from-transparent to-champagne/40" />
-            <span className="text-[10px] tracking-wider-luxury uppercase text-bronze">
-              Our Team
-            </span>
-            <span className="h-px flex-1 bg-gradient-to-l from-transparent to-champagne/40" />
-          </div>
-        </div>
-      </Reveal>
+      {/* Department sections */}
+      {departments.map((department, departmentIndex) => (
+        <section
+          key={department.name}
+          className={`px-6 pt-20 lg:px-16 lg:pt-24 ${
+            departmentIndex === departments.length - 1 ? "pb-20 lg:pb-28" : ""
+          }`}
+        >
+          <div className="mx-auto max-w-[1400px]">
+            <Reveal>
+              <div className="flex items-center gap-3">
+                <span className="h-px flex-1 bg-gradient-to-r from-transparent to-champagne/40" />
+                <span className="text-[10px] tracking-wider-luxury uppercase text-bronze">
+                  Department
+                </span>
+                <span className="h-px flex-1 bg-gradient-to-l from-transparent to-champagne/40" />
+              </div>
+              <h2 className="mt-6 text-center font-display text-3xl lg:text-5xl xl:text-6xl leading-[1.08]">
+                {department.name}
+              </h2>
+            </Reveal>
 
-      {/* Remaining Team */}
-      <section className="px-6 py-20 lg:px-16 lg:py-28">
-        <div className="mx-auto max-w-[1400px]">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4">
-            {remainingMembers.map((member, index) => (
-              <TeamMemberCard key={member.name} member={member} index={index} />
-            ))}
+            <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4">
+              {department.members.map((member, index) => (
+                <TeamMemberCard key={member.name} member={member} index={index} />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
       <Footer />
     </main>
