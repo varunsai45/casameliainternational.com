@@ -3,10 +3,8 @@ import { Reveal } from "./Reveal";
 import { Facebook, Instagram } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
-const PHONE = "+91 99007 16198";
-const PHONE_RAW = "+919900716198";
-const PHONE2 = "+91 96064 48804";
-const PHONE2_RAW = "+919606448804";
+const PHONE = "+91 96323 01790";
+const PHONE_RAW = "+919632301790";
 const EMAIL = "santhosh@casameliainternational.com";
 
 export function Contact() {
@@ -37,8 +35,8 @@ export function Contact() {
       `*Message:* ${fields.details}`;
     const encoded = encodeURIComponent(waMessage);
 
-    // 1. WhatsApp to +91 9900716198
-    window.open(`https://wa.me/919900716198?text=${encoded}`, "_blank", "noopener");
+    // 1. WhatsApp to +91 9632301790
+    window.open(`https://wa.me/${PHONE_RAW.replace("+", "")}?text=${encoded}`, "_blank", "noopener");
 
     // 2. Email to the founder
     const subject = encodeURIComponent("New Website Enquiry, CASAMELIA INTERNATIONAL");
@@ -111,10 +109,6 @@ export function Contact() {
             <div>
               <div className="text-[10px] tracking-luxury uppercase text-bronze mb-1">Direct</div>
               <a href={`tel:${PHONE_RAW}`} className="text-foreground/85 hover:text-champagne transition-colors">{PHONE}</a>
-            </div>
-            <div>
-              <div className="text-[10px] tracking-luxury uppercase text-bronze mb-1">Direct</div>
-              <a href={`tel:${PHONE2_RAW}`} className="text-foreground/85 hover:text-champagne transition-colors">{PHONE2}</a>
             </div>
             <div>
               <div className="text-[10px] tracking-luxury uppercase text-bronze mb-1">WhatsApp</div>

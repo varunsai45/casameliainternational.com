@@ -3,7 +3,7 @@ import { MessageCircle, Phone, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { trackEvent } from "@/lib/analytics";
 
-const PHONE_RAW = "+919900716198";
+const PHONE_RAW = "+919632301790";
 const CHAT_SRC = "https://casamelia-lead-platform.vercel.app/api/widget";
 
 const CHAT_PANEL_ID = "casamelia-chat-panel";

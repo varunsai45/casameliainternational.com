@@ -30,13 +30,10 @@ export function Footer() {
           <div className="text-[10px] tracking-luxury uppercase text-bronze mb-5">Contact</div>
           <ul className="space-y-3 text-sm font-light">
             <li>
-              <a href="tel:+919900716198" className="text-foreground/70 hover:text-champagne transition-colors">+91 99007 16198</a>
+              <a href="tel:+919632301790" className="text-foreground/70 hover:text-champagne transition-colors">+91 96323 01790</a>
             </li>
             <li>
-              <a href="tel:+919606448804" className="text-foreground/70 hover:text-champagne transition-colors">+91 96064 48804</a>
-            </li>
-            <li>
-              <a href="https://wa.me/919900716198" target="_blank" rel="noreferrer" className="text-foreground/70 hover:text-champagne transition-colors">WhatsApp</a>
+              <a href="https://wa.me/919632301790" target="_blank" rel="noreferrer" className="text-foreground/70 hover:text-champagne transition-colors">WhatsApp</a>
             </li>
             <li>
               <a href="mailto:santhosh@casameliainternational.com" className="text-foreground/70 hover:text-champagne transition-colors break-all">santhosh@casameliainternational.com</a>
