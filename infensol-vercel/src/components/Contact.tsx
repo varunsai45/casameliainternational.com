@@ -74,18 +74,10 @@ export function Contact() {
           <h2 className="font-display text-4xl lg:text-5xl xl:text-6xl leading-[1.08]">
             A private <span className="italic">luxury</span> consultation.
           </h2>
-          <p className="mt-8 text-foreground/60 font-light max-w-md">
-            Share your vision. Santhosh MS and our senior design team will
-            personally curate your concept and arrange a private showroom and
-            factory visit.
-          </p>
 
-          <div className="mt-12 space-y-6 text-sm">
+          <div className="mt-8 space-y-6 text-sm">
             <div>
-              <div className="text-[10px] tracking-luxury uppercase text-bronze mb-1">Founder</div>
-              <div className="text-foreground/85 font-display text-xl">Santhosh MS</div>
-              <div className="text-foreground/55 text-xs mt-1">Casamelia International</div>
-              <div className="flex items-center gap-3 mt-5">
+              <div className="flex items-center gap-3">
                 <a
                   href="https://www.facebook.com/share/1W3ivHVuoi/"
                   target="_blank"
